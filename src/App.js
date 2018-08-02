@@ -15,30 +15,35 @@ class App extends Component {
   constructor (){
     super()
     this.state = {
-      currentUser: '',
-      gameOver: false,
+      //currentUser: '',
+      gameOver: true,
       score: 0,
       allScores: []
     }
-
-    // this.setState({
+    fetch(`${BASEURL}/users`)
+    .then(resp => resp.json())
+    .then(score => this.setState({ allScores: score }))
+     //this.setState({
     //FETCH ALL SCORES FROM BACKEND FIRST
-    // })
+     //})
   }
 
   setScore=(score)=>{
     this.setState((prevState) => ({
       gameOver: true,
       score: score,
-      allScores: prevState.allScores.push(score)
+      //allScores: prevState.allScores.push(score)
     }))
   }
-  handleSubmit=(e)=>{
-    console.log(e.target[0].value);
+  handleSubmit=(e, name)=>{
+    let user = name.join('')
+    //console.log(e.target[0].value);
     e.preventDefault();
-    this.setState({
-      currentUser: 'e.target.value',
-    })
+    //optimistic render of newly saved score
+    // this.setState((prevState) => ({
+    //   allScores: prevState.allScores.push({user score})
+    // }))
+    //set our options for our new score post to backend
       const options = {
         method: 'POST',
         headers:{
@@ -46,11 +51,12 @@ class App extends Component {
           'Accept': 'application/json'
         },
         'body': JSON.stringify({
-             user: this.state.currentUser,
+             user: user,
              score: this.state.score
            })
       }
     fetch(`${BASEURL}/users`, options)
+    window.location.pathname = "/scores"
   }
 
   render() {

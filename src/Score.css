@@ -1,0 +1,24 @@
+
+
+.game-container{
+  display: grid;
+  background-color: black;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.game{
+  background-color: lightblue;
+  font-size: 78px;
+  margin: auto;
+}
+.user{
+  background-color: lawngreen;
+  font-size: 78px;
+  margin: auto;
+}
+.score{
+  background-color: hotpink;
+  font-size: 78px;
+  margin: auto;
+}

@@ -1,0 +1,36 @@
+.cyclic_input {
+    float: left;
+    font-family: monospace !important;
+    padding: 1rem;
+    font-size: 5rem;
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.cyclic_input:before,
+.cyclic_input:after {
+    display: block;
+    position: absolute;
+    left: 50%;
+    font-size: 1rem;
+    transform: translateX(-50%);
+}
+
+.cyclic_input:before {
+    content: '▲';
+    top: 0;
+}
+
+.cyclic_input:after {
+    content: '▼';
+    bottom: 0;
+}
+#user-form{
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-flow: row wrap;
+}
